@@ -12,6 +12,7 @@ export default {
       colors: {
         primary: "#F21D97",
         desc: "#2B2B2B",
+        title: "#F7F7F7",
       },
     },
   },
