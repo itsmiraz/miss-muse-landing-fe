@@ -1,4 +1,5 @@
 import React from "react";
+import StarTick from "@/assets/StarTick.svg";
 
 /** Small purple badge icon (replace with your own if you like) */
 const BadgeIcon = () => (
@@ -89,9 +90,14 @@ const FormationForYou: React.FC = () => {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-5">
             {bullets.map((b, i) => (
-              <div key={i} className="flex items-start">
-                <BadgeIcon />
-                <p className="text-[22px] leading-[1.25] text-zinc-100">{b}</p>
+              <div key={i} className="flex gap-x-2 items-start">
+                <div>
+                  {" "}
+                  <StarTick />
+                </div>
+                <p className="text-[22px] font-db-sans leading-[1.25] text-zinc-100">
+                  {b}
+                </p>
               </div>
             ))}
           </div>

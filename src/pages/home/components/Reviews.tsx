@@ -33,27 +33,28 @@ const REVIEWS = [
 const ReviewCard = ({ data }) => {
   return (
     <div
-      className="group relative flex h-[240px] md:h-[260px] w-[560px] md:w-[680px] items-center
+      className="group relative flex gap-[45px] h-[240px] md:h-[430px] w-[560px] md:w-[1082px] items-center
                  rounded-2xl border border-white/10
-                 bg-[radial-gradient(120%_140%_at_0%_0%,rgba(255,255,255,0.04),rgba(255,255,255,0)_45%),#0C0E10]
-                 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.65)] overflow-hidden"
+                 overflow-hidden"
     >
       {/* Avatar */}
       <div className="pl-5 md:pl-6 pr-4">
         <img
           src={data.img}
           alt={data.name}
-          className="h-[140px] w-[140px] md:h-[156px] md:w-[156px] rounded-xl object-cover"
+          className="h-[140px] w-[140px] md:h-[358px] md:w-[302px] rounded-xl object-cover"
         />
       </div>
 
       {/* Content */}
       <div className="pr-6 md:pr-8">
-        <h4 className="text-[18px] md:text-[20px] font-semibold text-white">
+        <h4 className="text-[18px] md:text-[28px] mb-[12px] font-semibold text-white">
           {data.name}
         </h4>
-        <p className="text-sm md:text-[15px] text-zinc-300 mb-3">{data.role}</p>
-        <p className="max-w-[420px] md:max-w-[480px] text-[13.5px] md:text-[15px] leading-relaxed text-zinc-200">
+        <p className="text-sm md:text-[20px] text-zinc-300  mb-3">
+          {data.role}
+        </p>
+        <p className="max-w-[420px] mt-[20px] md:max-w-[480px] text-[13.5px] md:text-[16px] leading-relaxed text-zinc-200">
           {data.text}
         </p>
       </div>
