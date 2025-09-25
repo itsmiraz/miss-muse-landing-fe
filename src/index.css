@@ -36,3 +36,20 @@ html {
 .buttonBG {
   background: linear-gradient(167.84deg, #ff0093 -76.16%, #3c0023 126.95%);
 }
+
+.masterClassBg {
+  background: radial-gradient(
+      46.38% 79.31% at 49.38% 49.8%,
+      rgba(239, 32, 151, 0.1125) 46.1%,
+      rgba(239, 32, 151, 0.45) 100%
+    )
+    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+}
+
+.contactbg {
+  background: linear-gradient(
+    192.05deg,
+    rgba(239, 32, 151, 0.1125) -20.16%,
+    rgba(239, 32, 151, 0.45) 46.43%
+  );
+}
