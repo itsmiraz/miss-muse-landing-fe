@@ -1,23 +1,5 @@
 import React from "react";
-
-/* Small blue badge (replace with your own icon if you want) */
-const Bullet = () => (
-  <span
-    className="mr-3 mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full
-                   bg-[linear-gradient(167.84deg,#5EC8FF_-76.16%,#003A66_126.95%)]
-                   shadow-[0_0_16px_rgba(94,200,255,0.45)]"
-  >
-    <svg viewBox="0 0 20 20" className="h-3.5 w-3.5" fill="none" aria-hidden>
-      <path
-        d="M15.833 6.25l-7.5 7.5-3.166-3.167"
-        stroke="#F7F7F7"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </span>
-);
+import BlueTick from "@/assets/BlueTick.svg";
 
 const left = [
   "Audit Instagram personnalisé avec plan d’action pour bien démarrer",
@@ -42,8 +24,9 @@ const MasterclassPricing: React.FC = () => {
           style={{
             background:
               "radial-gradient(50% 50% at 50% 50%, #896C1C 0%, #513D05 100%)",
+            border: " 0.5px solid rgba(255, 193, 22, 1)",
           }}
-          className="rounded-full  px-4 py-1 text-[13px] font-semibold text-white "
+          className="rounded-[12px]  px-6 py-1 text-[23px] font-semibold text-white "
         >
           MMMM
         </div>
@@ -55,7 +38,15 @@ const MasterclassPricing: React.FC = () => {
       </h2>
 
       {/* Card with neon border + glow */}
-      <div className="mx-auto masterClassBg mt-8 max-w-[965px] rounded-[22px] p-[1.6px] ">
+      <div
+        style={{
+          border: "2px solid transparent", // transparent is key
+          borderImageSource:
+            "conic-gradient(from 270deg at 50% 50%, #89F220 0deg, #FFD151 84.2deg, #89F220 180.76deg, #ED7523 234.33deg, #3CFFFF 269.68deg, #89F220 360deg)",
+          borderImageSlice: 1,
+        }}
+        className="mx-auto masterClassBg mt-8 max-w-[965px] p-[1.6px] rounded-[22px]"
+      >
         <div
           className="rounded-[22px] border border-white/10
                         px-6 py-7 md:px-9 md:py-9 relative"
@@ -93,18 +84,22 @@ const MasterclassPricing: React.FC = () => {
             {left.map((t, i) => (
               <div
                 key={`l-${i}`}
-                className="flex items-start text-[16px] md:text-[17px] leading-[1.35] text-zinc-100"
+                className="flex items-start gap-x-2 text-[16px] md:text-[17px] leading-[1.35] text-zinc-100"
               >
-                <Bullet />
+                <div>
+                  <BlueTick />
+                </div>
                 <span>{t}</span>
               </div>
             ))}
             {right.map((t, i) => (
               <div
                 key={`r-${i}`}
-                className="flex items-start text-[16px] md:text-[17px] leading-[1.35] text-zinc-100"
+                className="flex items-start gap-x-2 text-[16px] md:text-[17px] leading-[1.35] text-zinc-100"
               >
-                <Bullet />
+                <div>
+                  <BlueTick />
+                </div>
                 <span>{t}</span>
               </div>
             ))}

@@ -80,7 +80,7 @@ const FormationForYou: React.FC = () => {
       <div
         className="mx-auto mt-8 max-w-6xl rounded-2xl p-[1.5px]
                       bg-[linear-gradient(90deg,#FFB000_0%,#EF2097_35%,#47E0B2_70%,#4DA3FF_100%)]
-                      shadow-[0_20px_60px_-20px_rgba(239,32,151,0.45)]"
+                    '"
       >
         <div
           className="rounded-2xl

@@ -36,6 +36,18 @@ html {
 .buttonBG {
   background: linear-gradient(167.84deg, #ff0093 -76.16%, #3c0023 126.95%);
 }
+.reviewsBTNBG {
+  background: radial-gradient(
+      46.38% 118.72% at 49.38% 49.8%,
+      rgba(39, 135, 241, 0.1125) 8.65%,
+      rgba(39, 135, 241, 0.45) 100%
+    )
+    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+}
+
+.goldenBG {
+  background: radial-gradient(50% 50% at 50% 50%, #896c1c 0%, #513d05 100%);
+}
 
 .masterClassBg {
   background: radial-gradient(

@@ -78,7 +78,7 @@ const Reviews = () => {
       {/* Header row */}
       <div className="flex items-center justify-between px-6 md:px-8">
         <span
-          className="inline-block rounded-lg bg-white/10 px-3 py-1 text-[13px] font-semibold text-white/90
+          className="inline-block rounded-lg reviewsBTNBG px-6 py-2 text-[26px] font-semibold text-white/90
                      border border-white/15"
         >
           Réviews
@@ -89,15 +89,14 @@ const Reviews = () => {
             aria-label="Slide left"
             onClick={handleLeftClick}
             className="left-arrow flex h-9 w-9 items-center justify-center rounded-full
-                       bg-white/10 hover:bg-white/15 border border-white/15 transition"
+                    transition"
           >
             <LeftArrow />
           </button>
           <button
             aria-label="Slide right"
             onClick={handleRightClick}
-            className="right-arrow flex h-9 w-9 items-center justify-center rounded-full
-                       bg-white/10 hover:bg-white/15 border border-white/15 transition"
+            className="right-arrow flex h-9 w-9 items-center justify-center rounded-full transition"
           >
             <RightArrow />
           </button>
@@ -105,23 +104,66 @@ const Reviews = () => {
       </div>
 
       {/* Swiper */}
-      <div className="pt-6 pl-6 md:pl-8">
+      <div className="pt-20  mx-auto pl-6 md:pl-8">
         <Swiper
           ref={swiperRef}
           modules={[Navigation]}
-          navigation={{ nextEl: ".right-arrow", prevEl: ".left-arrow" }}
+          // Scope selectors to this section so it doesn't bind the wrong buttons
+          // onBeforeInit={(swiper) => {
+          //   const root = swiper.el.closest(".reviews-slider");
+          //   swiper?.params?.navigation?.prevEl =
+          //     root.querySelector(".left-arrow");
+          //   swiper?.params?.navigation?.nextEl =
+          //     root.querySelector(".right-arrow");
+          // }}
+          // navigation
+          slidesPerView="auto"
+          centeredSlides={false}
+          watchOverflow={true}
           loop={false}
           breakpoints={{
-            320: { slidesPerView: 1.1, spaceBetween: 18 },
-            640: { slidesPerView: 1.3, spaceBetween: 22 },
-            768: { slidesPerView: 1.6, spaceBetween: 26 },
-            1024: { slidesPerView: 2.1, spaceBetween: 28 },
-            1440: { slidesPerView: 2.6, spaceBetween: 32 },
+            300: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            400: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 1,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            1200: {
+              slidesPerView: 1.1,
+              spaceBetween: 20,
+            },
+            1400: {
+              slidesPerView: 1.2,
+              spaceBetween: 20,
+            },
+
+            1600: {
+              slidesPerView: 1.4,
+              spaceBetween: 20,
+            },
+            1800: {
+              slidesPerView: 1.6,
+              spaceBetween: 20,
+            },
           }}
           className="mySwiper"
         >
           {REVIEWS.map((r, i) => (
-            <SwiperSlide key={i} className="!w-auto">
+            <SwiperSlide key={i} className="w-[1082px]">
               <ReviewCard data={r} />
             </SwiperSlide>
           ))}
