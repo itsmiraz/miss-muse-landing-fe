@@ -106,7 +106,7 @@ const FAQItem: React.FC<FAQ> = ({ q, a }) => {
       >
         <div
           ref={contentRef}
-          className={`px-5 pb-5 md:px-7 md:pb-6 text-zinc-200
+          className={`px-5 mx-3 pt-2   border-t border-[#FFFFFF]/30 pb-5 md:px-7 md:pb-6 text-zinc-200
                      transition-all duration-400
                      ${
                        open

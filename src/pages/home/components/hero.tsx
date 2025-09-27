@@ -15,7 +15,11 @@ const Hero = () => {
         <p className="text-[#F7F7F7]  pb-10 leading-[110%]  font-db-sans text-[24px] ">
           Arrêtez de courir après les clientes : <br /> Attirez-les.
         </p>
-        <button className=" buttonBG py-5 px-[47px] border border-[#F71B9A] font-bold font-plus-jakarta text-2xl flex items-center gap-x-2 rounded-full">
+        <button
+          className="buttonBG py-5 px-[47px] border border-[#F71B9A] font-bold font-plus-jakarta text-2xl flex items-center gap-x-2 rounded-full 
+  transition-all duration-300 ease-in-out 
+  hover:scale-105 hover:shadow-lg hover:bg-[#920758] hover:text-white"
+        >
           JOIN LA WAITLIST <ArrowLeft />
         </button>
       </div>

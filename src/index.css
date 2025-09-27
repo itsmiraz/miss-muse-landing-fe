@@ -58,10 +58,24 @@ html {
     /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
 }
 
+.proccessGradient {
+  background: linear-gradient(0deg, #f7f7f7, #f7f7f7),
+    linear-gradient(90.6deg, #ff9dd6 62.71%, #ef2097 82.24%);
+}
 .contactbg {
   background: linear-gradient(
     192.05deg,
     rgba(239, 32, 151, 0.1125) -20.16%,
     rgba(239, 32, 151, 0.45) 46.43%
+  );
+}
+
+.proccessCardBorder {
+  border: 1px solid;
+
+  border-image-source: linear-gradient(
+    183.49deg,
+    #ffffff 2.78%,
+    #3a3a3a 97.22%
   );
 }

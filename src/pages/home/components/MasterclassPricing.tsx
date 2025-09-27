@@ -39,81 +39,87 @@ const MasterclassPricing: React.FC = () => {
 
       {/* Card with neon border + glow */}
       <div
+        className="mx-auto masterClassBg mt-8 max-w-[965px] rounded-[22px] p-[1px]"
         style={{
-          border: "2px solid transparent", // transparent is key
-          borderImageSource:
+          background:
             "conic-gradient(from 270deg at 50% 50%, #89F220 0deg, #FFD151 84.2deg, #89F220 180.76deg, #ED7523 234.33deg, #3CFFFF 269.68deg, #89F220 360deg)",
-          borderImageSlice: 1,
         }}
-        className="mx-auto masterClassBg mt-8 max-w-[965px] p-[1.6px] rounded-[22px]"
       >
         <div
-          className="rounded-[22px] border border-white/10
-                        px-6 py-7 md:px-9 md:py-9 relative"
+          className="rounded-[23px] border border-white/10
+              relative bg-black"
         >
-          {/* Top price row */}
-          <div className="flex items-center justify-center gap-3">
-            <span className="text-zinc-300/70 line-through tracking-wide font-semibold">
-              CAD 2100$
-            </span>
-            <span
-              className="rounded-full px-3 py-1 text-[12px] font-bold text-black
-                             bg-[linear-gradient(180deg,#FFE6F4_0%,#FFCFEA_100%)]
-                             shadow-[0_6px_18px_rgba(239,32,151,0.35)]"
+          <div className="masterClassBg  px-6 py-7 rounded-[23px] md:px-9 md:py-9 ">
+            {/* Top price row */}
+            <div className="flex items-center justify-center gap-3">
+              <span className="text-zinc-300/70 text-[24px] line-through tracking-wide font-semibold">
+                CAD 2100$
+              </span>
+              <span
+                className="rounded-[12px] px-5 py-2 text-[15px] font-bold text-[#FFE8F5]
+                             bg-[#4B253B]
+                            "
+              >
+                300$ OFF
+              </span>
+            </div>
+
+            {/* Main price */}
+            <div className="mt-1 text-center text-[44px] md:text-[52px] font-extrabold tracking-tight text-[#F7F7F7]">
+              CAD 1800$
+            </div>
+
+            {/* Access bar */}
+            <div className="mt-5 rounded-lg font-bold  border border-white/15 bg-white/5 px-4 py-2 text-center text-sm md:text-[18px] text-zinc-200">
+              Accès Au Programme Complet: Branding, Marketing, Et Fidélisation
+              Clients.
+            </div>
+
+            {/* Divider */}
+            <div className="my-5 h-px w-full bg-white/10" />
+
+            {/* Checklist */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4">
+              {left.map((t, i) => (
+                <div
+                  key={`l-${i}`}
+                  className="flex items-start gap-x-2 text-[16px] md:text-[17px] leading-[1.35] text-zinc-100"
+                >
+                  <div>
+                    <BlueTick />
+                  </div>
+                  <span>{t}</span>
+                </div>
+              ))}
+              {right.map((t, i) => (
+                <div
+                  key={`r-${i}`}
+                  className="flex items-start gap-x-2 text-[16px] md:text-[17px] leading-[1.35] text-zinc-100"
+                >
+                  <div>
+                    <BlueTick />
+                  </div>
+                  <span>{t}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Bar */}
+            {/* CTA Bar */}
+            <button
+              className="group mt-7 w-full rounded-lg border border-[#F71B9A]
+             bg-[linear-gradient(167.84deg,#FF0093_-76.16%,#3C0023_126.95%)]
+             px-5 py-4 text-center text-[16px] md:text-[18px] font-bold text-white
+             shadow-[0_14px_40px_-10px_rgba(239,32,151,0.55)]
+             transition-all duration-300 ease-in-out
+             hover:scale-[1.03] hover:shadow-[0_20px_50px_-10px_rgba(239,32,151,0.75)]"
             >
-              300$ OFF
-            </span>
+              Commencez Maintenant
+              <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            </button>
           </div>
-
-          {/* Main price */}
-          <div className="mt-1 text-center text-[44px] md:text-[52px] font-extrabold tracking-tight text-[#F7F7F7]">
-            CAD 1800$
-          </div>
-
-          {/* Access bar */}
-          <div className="mt-5 rounded-lg border border-white/15 bg-white/5 px-4 py-2 text-center text-sm md:text-[15px] text-zinc-200">
-            Accès Au Programme Complet: Branding, Marketing, Et Fidélisation
-            Clients.
-          </div>
-
-          {/* Divider */}
-          <div className="my-5 h-px w-full bg-white/10" />
-
-          {/* Checklist */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4">
-            {left.map((t, i) => (
-              <div
-                key={`l-${i}`}
-                className="flex items-start gap-x-2 text-[16px] md:text-[17px] leading-[1.35] text-zinc-100"
-              >
-                <div>
-                  <BlueTick />
-                </div>
-                <span>{t}</span>
-              </div>
-            ))}
-            {right.map((t, i) => (
-              <div
-                key={`r-${i}`}
-                className="flex items-start gap-x-2 text-[16px] md:text-[17px] leading-[1.35] text-zinc-100"
-              >
-                <div>
-                  <BlueTick />
-                </div>
-                <span>{t}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA Bar */}
-          <button
-            className="mt-7 w-full rounded-lg border border-white/15
-                       bg-[linear-gradient(167.84deg,#FF0093_-76.16%,#3C0023_126.95%)]
-                       px-5 py-4 text-center text-[16px] md:text-[18px] font-bold text-white
-                       shadow-[0_14px_40px_-10px_rgba(239,32,151,0.55)] hover:opacity-95 transition"
-          >
-            Commencez Maintenant →
-          </button>
         </div>
       </div>
     </section>

@@ -32,31 +32,33 @@ const REVIEWS = [
 /* ---- Single review card ---- */
 const ReviewCard = ({ data }) => {
   return (
-    <div
-      className="group relative flex gap-[45px] h-[240px] md:h-[430px] w-[560px] md:w-[1082px] items-center
-                 rounded-2xl border border-white/10
+    <div className="rounded-2xl border border-white/30 w-fit ">
+      <div
+        className="group relative  z-50 flex gap-[45px] h-[240px] md:h-[430px] w-[560px] md:w-[1082px] items-center
+                 rounded-2xl border bg-black/90 border-white/10
                  overflow-hidden"
-    >
-      {/* Avatar */}
-      <div className="pl-5 md:pl-6 pr-4">
-        <img
-          src={data.img}
-          alt={data.name}
-          className="h-[140px] w-[140px] md:h-[358px] md:w-[302px] rounded-xl object-cover"
-        />
-      </div>
+      >
+        {/* Avatar */}
+        <div className="pl-5 md:pl-6 pr-4">
+          <img
+            src={data.img}
+            alt={data.name}
+            className="h-[140px] w-[140px] md:h-[358px] md:w-[302px] rounded-xl object-cover"
+          />
+        </div>
 
-      {/* Content */}
-      <div className="pr-6 md:pr-8">
-        <h4 className="text-[18px] md:text-[28px] mb-[12px] font-semibold text-white">
-          {data.name}
-        </h4>
-        <p className="text-sm md:text-[20px] text-zinc-300  mb-3">
-          {data.role}
-        </p>
-        <p className="max-w-[420px] mt-[20px] md:max-w-[480px] text-[13.5px] md:text-[16px] leading-relaxed text-zinc-200">
-          {data.text}
-        </p>
+        {/* Content */}
+        <div className="pr-6 md:pr-8">
+          <h4 className="text-[18px] md:text-[28px] mb-[12px] font-semibold text-white">
+            {data.name}
+          </h4>
+          <p className="text-sm md:text-[20px] text-zinc-300  mb-3">
+            {data.role}
+          </p>
+          <p className="max-w-[420px] mt-[20px] md:max-w-[480px] text-[13.5px] md:text-[16px] leading-relaxed text-zinc-200">
+            {data.text}
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -74,7 +76,7 @@ const Reviews = () => {
   };
 
   return (
-    <section className="py-16 lg:px-10">
+    <section className="py-16  max-w-[2000px] mx-auto lg:px-10">
       {/* Header row */}
       <div className="flex items-center justify-between px-6 md:px-8">
         <span
@@ -104,19 +106,10 @@ const Reviews = () => {
       </div>
 
       {/* Swiper */}
-      <div className="pt-20  mx-auto pl-6 md:pl-8">
+      <div className="pt-20  pl-6 md:pl-8">
         <Swiper
           ref={swiperRef}
           modules={[Navigation]}
-          // Scope selectors to this section so it doesn't bind the wrong buttons
-          // onBeforeInit={(swiper) => {
-          //   const root = swiper.el.closest(".reviews-slider");
-          //   swiper?.params?.navigation?.prevEl =
-          //     root.querySelector(".left-arrow");
-          //   swiper?.params?.navigation?.nextEl =
-          //     root.querySelector(".right-arrow");
-          // }}
-          // navigation
           slidesPerView="auto"
           centeredSlides={false}
           watchOverflow={true}

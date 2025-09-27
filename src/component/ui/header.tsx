@@ -12,7 +12,7 @@ const Header = () => {
       {navlinks.map((item, i) => (
         <a href={item.link}>
           {" "}
-          <p className=" text-[#F7F7F7] text-xl hover:font-medium transition-all ease-in-out duration-200">
+          <p className=" text-[#F7F7F7] hover:text-pink-500 text-xl hover:font-medium transition-all ease-in-out duration-200">
             {item.label}
           </p>
         </a>

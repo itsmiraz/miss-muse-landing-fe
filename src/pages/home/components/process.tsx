@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import MarketingIcon from "../../../assets/Marketing.svg";
 import BulbIcon from "../../../assets/Bulb.svg";
 import HumanIcon from "../../../assets/Human.svg";
-import CrownIcon from "../../../assets/Crown.svg";
+import CrownIcon from "../../../assets/BrandingIcon.svg";
 
 /** Small pink gradient check bullet */
 const CheckBadge = () => (
@@ -30,7 +30,7 @@ const Card: React.FC<{ title: string; items: string[] }> = ({
 }) => (
   <div
     className="rounded-2xl p-5 md:p-6 lg:p-7
-                  border border-white/10
+                  border border-white/20
                   bg-[radial-gradient(120%_120%_at_0%_0%,rgba(239,32,151,0.18),rgba(255,255,255,0)_45%),linear-gradient(180deg,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0.02)_100%),#0F0F10]
                   shadow-[0_10px_40px_-10px_rgba(0,0,0,0.6)]
                   backdrop-blur-[2px]"
@@ -38,7 +38,7 @@ const Card: React.FC<{ title: string; items: string[] }> = ({
     <div className="text-[18px] md:text-[20px] font-semibold mb-4 text-[#F7F7F7]">
       {title}
     </div>
-    <ul className="space-y-2 text-[15px] leading-[1.35] text-zinc-200">
+    <ul className="space-y-2 grid grid-cols-2 text-[15px] leading-[1.35] text-zinc-200">
       {items.map((t, i) => (
         <li key={i} className="flex">
           <CheckBadge />
@@ -335,7 +335,7 @@ const TabsBar: React.FC<{
             key={key}
             onClick={() => onChange(key)}
             className={[
-              "group flex flex-col items-center gap-2 rounded-xl px-5 py-3 text-sm md:text-base font-semibold transition",
+              "group flex flex-col w-[170px] h-[100px] items-center gap-2 rounded-xl px-5 py-3 text-sm md:text-base font-semibold transition",
               "border",
               isActive
                 ? "border-[#F71B9A] bg-[linear-gradient(167.84deg,#FF0093_-76.16%,#3C0023_126.95%)] text-white shadow-[0_10px_30px_-6px_rgba(239,32,151,0.45)]"
@@ -356,7 +356,7 @@ const TabsBar: React.FC<{
 const SectionGrid: React.FC<{ section: SectionKey }> = ({ section }) => {
   const blocks = useMemo(() => DATA[section], [section]);
   return (
-    <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+    <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-2">
       {blocks.map((b, i) => (
         <Card key={i} title={b.title} items={b.items} />
       ))}
