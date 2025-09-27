@@ -80,7 +80,7 @@ const Reviews = () => {
       {/* Header row */}
       <div className="flex items-center justify-between px-6 md:px-8">
         <span
-          className="inline-block rounded-lg reviewsBTNBG px-6 py-2 text-[26px] font-semibold text-white/90
+          className="inline-block rounded-lg reviewsBTNBG px-6 py-2 text-[15px] md:text-[26px] font-semibold text-white/90
                      border border-white/15"
         >
           Réviews
@@ -106,7 +106,7 @@ const Reviews = () => {
       </div>
 
       {/* Swiper */}
-      <div className="pt-20  pl-6 md:pl-8">
+      <div className="pt-10 md:pt-20  pl-6 md:pl-8">
         <Swiper
           ref={swiperRef}
           modules={[Navigation]}

@@ -38,9 +38,9 @@ const Card: React.FC<{ title: string; items: string[] }> = ({
     <div className="text-[18px] md:text-[20px] font-semibold mb-4 text-[#F7F7F7]">
       {title}
     </div>
-    <ul className="space-y-2 grid grid-cols-2 text-[15px] leading-[1.35] text-zinc-200">
+    <ul className="space-y-2  gap-x-2 grid grid-cols-2 text-[12px] md:text-[15px] leading-[1.35] text-zinc-200">
       {items.map((t, i) => (
-        <li key={i} className="flex">
+        <li key={i} className="flex gap-x-1">
           <CheckBadge />
           <span>{t}</span>
         </li>
@@ -368,7 +368,7 @@ const Process: React.FC = () => {
   const [active, setActive] = useState<SectionKey>("branding");
 
   return (
-    <section className="py-[120px] md:py-[152px]">
+    <section className="py-[120px] px-4 md:py-[152px]">
       <h2 className="text-gradient text-center text-[44px] md:text-[56px] lg:text-[70px] font-bold leading-[1.1]">
         Processus
       </h2>
