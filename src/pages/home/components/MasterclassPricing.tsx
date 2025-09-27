@@ -17,7 +17,7 @@ const right = [
 
 const MasterclassPricing: React.FC = () => {
   return (
-    <section className="py-20">
+    <section className="py-20 px-4">
       {/* Gold pill */}
       <div className="mx-auto mb-4 flex justify-center">
         <div

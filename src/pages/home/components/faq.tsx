@@ -127,7 +127,7 @@ const FAQItem: React.FC<FAQ> = ({ q, a }) => {
 
 const FAQSection: React.FC = () => {
   return (
-    <section className="py-24">
+    <section className="py-24 px-4">
       <h2 className="text-gradient text-center text-[36px] md:text-[44px] font-extrabold leading-tight mb-6">
         FAQ
       </h2>

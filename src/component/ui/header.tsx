@@ -33,14 +33,14 @@ const Header = () => {
 
   // Small utility for shared link styles
   const linkCls =
-    "px-2 py-1 text-[#F7F7F7] hover:text-pink-500 text-lg md:text-xl transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-500/70 rounded-md";
+    "px-2 py-1 text-[#F7F7F7] whitespace-nowrap hover:text-pink-500 text-lg md:text-xl transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-500/70 rounded-md";
 
   return (
     <>
       {/* Desktop / Tablet */}
       <nav
         aria-label="Primary"
-        className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-6 max-w-[718px] mx-auto px-10 py-5 rounded-full border border-white/10 items-center gap-x-6 bg-white/5 backdrop-blur-md z-40"
+        className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-6 max-w-[818px] mx-auto px-10 py-5 rounded-full border border-white/10 items-center gap-x-6 bg-white/5 backdrop-blur-md z-40"
       >
         {navlinks.map((item, i) => (
           <a key={i} href={item.link} className={linkCls}>
@@ -112,10 +112,10 @@ const Header = () => {
               <a
                 key={i}
                 href={item.link}
-                className={`${linkCls} text-base py-3 px-3`}
+                className={`${linkCls} text-base   py-3 px-3 `}
                 onClick={() => setOpen(false)}
               >
-                {item.label}
+                <p> {item.label}</p>
               </a>
             ))}
           </div>

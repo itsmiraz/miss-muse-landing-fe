@@ -70,7 +70,7 @@ const bullets: Array<React.ReactNode> = [
 
 const FormationForYou: React.FC = () => {
   return (
-    <section className="py-20">
+    <section className="py-20 px-4">
       {/* Title */}
       <h2 className="text-center text-[32px] md:text-[40px] lg:text-[44px] font-extrabold leading-tight text-gradient">
         Cette Formation Est Faite Pour Vous Si…
@@ -88,14 +88,14 @@ const FormationForYou: React.FC = () => {
                         border border-white/10
                         px-5 py-6 md:px-8 md:py-9"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 md:gap-y-5">
             {bullets.map((b, i) => (
               <div key={i} className="flex gap-x-2 items-start">
                 <div>
                   {" "}
                   <StarTick />
                 </div>
-                <p className="text-[22px] font-db-sans leading-[1.25] text-zinc-100">
+                <p className="text-[16px] md:text-[22px] font-db-sans leading-[1.25] text-zinc-100">
                   {b}
                 </p>
               </div>
