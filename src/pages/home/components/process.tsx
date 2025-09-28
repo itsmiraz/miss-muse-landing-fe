@@ -3,6 +3,7 @@ import MarketingIcon from "../../../assets/Marketing.svg";
 import BulbIcon from "../../../assets/Bulb.svg";
 import HumanIcon from "../../../assets/Human.svg";
 import CrownIcon from "../../../assets/BrandingIcon.svg";
+import PinkGlow from "../../../assets/glows/pinkGlow.svg";
 
 /** Small pink gradient check bullet */
 const CheckBadge = () => (
@@ -29,11 +30,11 @@ const Card: React.FC<{ title: string; items: string[] }> = ({
   items,
 }) => (
   <div
-    className="rounded-2xl p-5 md:p-6 lg:p-7
+    className="rounded-2xl  p-5 md:p-6 lg:p-7
                   border border-white/20
                   bg-[radial-gradient(120%_120%_at_0%_0%,rgba(239,32,151,0.18),rgba(255,255,255,0)_45%),linear-gradient(180deg,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0.02)_100%),#0F0F10]
                   shadow-[0_10px_40px_-10px_rgba(0,0,0,0.6)]
-                  backdrop-blur-[2px]"
+                  backdrop-blur-[4px]"
   >
     <div className="text-[18px] md:text-[20px] font-semibold mb-4 text-[#F7F7F7]">
       {title}
@@ -356,7 +357,7 @@ const TabsBar: React.FC<{
 const SectionGrid: React.FC<{ section: SectionKey }> = ({ section }) => {
   const blocks = useMemo(() => DATA[section], [section]);
   return (
-    <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-2">
+    <div className="mx-auto relative z-20 grid w-full max-w-7xl grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-2">
       {blocks.map((b, i) => (
         <Card key={i} title={b.title} items={b.items} />
       ))}
@@ -368,7 +369,7 @@ const Process: React.FC = () => {
   const [active, setActive] = useState<SectionKey>("branding");
 
   return (
-    <section className="py-[120px] px-4 md:py-[152px]">
+    <section className="py-[120px] relative px-4 md:py-[152px]">
       <h2 className="text-gradient text-center text-[44px] md:text-[56px] lg:text-[70px] font-bold leading-[1.1]">
         Processus
       </h2>
@@ -376,6 +377,10 @@ const Process: React.FC = () => {
       <TabsBar active={active} onChange={setActive} />
 
       <SectionGrid section={active} />
+
+      <div className="absolute left-0 top-0  z-0">
+        <PinkGlow />
+      </div>
     </section>
   );
 };

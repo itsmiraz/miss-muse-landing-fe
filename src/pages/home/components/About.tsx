@@ -1,10 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import LineBreak from "@/component/ui/LineBreak";
 import Woman from "../../../assets/woman.png";
+import PinkGlow from "../../../assets/glows/pinkGlow.svg";
 
 const About = () => {
   return (
-    <div id="about" className="py-20 px-5">
+    <div id="about" className="py-20 relative px-5">
       <div className="flex relative z-20 flex-col justify-center items-center">
         <img src={Woman} className="max-w-[229px] md:max-w-[305px]" alt="" />
         <div className="w-fit rounded-[62px] bg-gradient-to-l from-[#FFFFFF] to-[#FF0AD2] p-[1px] md:p-[4px]">
@@ -16,6 +17,13 @@ const About = () => {
         </div>
       </div>
 
+      <div className="absolute left-0 -top-40">
+        <PinkGlow />
+      </div>
+
+      <div className="absolute rotate-180 -right-0 -top-52">
+        <PinkGlow />
+      </div>
       <div className="w-fit -translate-y-6  md:-translate-y-10 grid place-items-center  max-w-[1270px] mx-auto bg-gradient-to-l from-[#F71B9A] to-[#FFB4DF] p-[1px] rounded-[24px]">
         <div className="bg-gradient-to-b from-[#190B14] to-[#080909] text-[20px] md:text-[28px]  max-w-[1270px] mx-auto backdrop-blur-lg w-full rounded-[24px] py-[40px] md:py-[87px] text-center px-5 md:px-[50px] lg:px-[91px] space-y-[43px]">
           <p>

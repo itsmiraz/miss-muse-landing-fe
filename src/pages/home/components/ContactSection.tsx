@@ -83,7 +83,7 @@ const ContactSection: React.FC = () => {
   return (
     <section className="py-16 md:py-24">
       <div
-        className="mx-auto w-full max-w-6xl rounded-[22px] border border-white/10
+        className="mx-auto  relative z-20  w-full max-w-6xl rounded-[22px] border border-white/10
                    bg-[radial-gradient(140%_160%_at_10%_10%,rgba(239,32,151,0.18),rgba(255,255,255,0)_42%),#0E1113]
                    shadow-[0_40px_120px_-20px_rgba(0,0,0,0.6)] p-4 md:p-6 lg:p-8"
       >

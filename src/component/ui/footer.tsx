@@ -3,11 +3,16 @@ import Facebookicon from "@/assets/Facebook.svg";
 import InstaGram from "@/assets/Insta.svg";
 import TiktokIcon from "@/assets/TikTok.svg";
 import Line from "@/assets/Line.svg";
+import BlueGlow from "@/assets/glows/BlueGlow.svg";
 
 const Footer = () => {
   return (
-    <div className=" pt-[20px] pb-[37px] md:pb-[50px]">
-      <div className="flex flex-col justify-center items-center mx-auto">
+    <div className=" pt-[20px] relative pb-[37px] md:pb-[50px]">
+      <div className="absolute -right-96 -bottom-[1200px]">
+        <BlueGlow />
+      </div>
+
+      <div className="flex relative z-40 flex-col justify-center items-center mx-auto">
         {/* <img src={logo} alt='logo' className='max-w-[93px] md:max-w-[125px]' /> */}
 
         <div>
