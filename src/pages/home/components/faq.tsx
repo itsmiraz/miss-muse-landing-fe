@@ -51,33 +51,20 @@ const faqs: FAQ[] = [
 const FAQItem: React.FC<FAQ> = ({ q, a }) => {
   const [open, setOpen] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
-  const id = useId();
   const [height, setHeight] = useState(0);
 
-  // Measure content height on mount + when window resizes
-  useEffect(() => {
-    const measure = () => setHeight(contentRef.current?.scrollHeight ?? 0);
-    measure();
-    const ro = new ResizeObserver(measure);
-    if (contentRef.current) ro.observe(contentRef.current);
-    window.addEventListener("resize", measure);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", measure);
-    };
-  }, []);
+  const toggleOpen = () => {
+    if (contentRef.current) {
+      setHeight(open ? 0 : contentRef.current.scrollHeight);
+    }
+    setOpen(!open);
+  };
 
   return (
-    <div
-      className="rounded-2xl border border-white/10
-                 bg-[radial-gradient(120%_140%_at_0%_0%,rgba(239,32,151,0.18),rgba(255,255,255,0)_45%),#0F1012]
-                 
-                 backdrop-blur-md overflow-hidden"
-    >
+    <div className="rounded-2xl border border-white/10 bg-[radial-gradient(120%_140%_at_0%_0%,rgba(239,32,151,0.18),rgba(255,255,255,0)_45%),#0F1012] backdrop-blur-md overflow-hidden">
       <button
-        onClick={() => setOpen((v) => !v)}
+        onClick={toggleOpen}
         aria-expanded={open}
-        aria-controls={id}
         className="w-full px-5 py-4 md:px-7 md:py-5 text-left flex items-center justify-between gap-4"
       >
         <span className="text-[18px] md:text-[20px] font-semibold text-zinc-100">
@@ -100,21 +87,13 @@ const FAQItem: React.FC<FAQ> = ({ q, a }) => {
         </svg>
       </button>
 
-      {/* Animated container */}
       <div
-        id={id}
-        style={{ maxHeight: open ? height : 0 }}
-        className="grid transition-[max-height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+        style={{ height }}
+        className="overflow-hidden transition-[height] duration-300 ease-out"
       >
         <div
           ref={contentRef}
-          className={`px-5 mx-3 pt-2   border-t border-[#FFFFFF]/20 pb-5 md:px-7 md:pb-6 text-zinc-200
-                     transition-all duration-400
-                     ${
-                       open
-                         ? "opacity-100 translate-y-0"
-                         : "opacity-0 -translate-y-1"
-                     }`}
+          className="px-5 mx-3 pt-2 border-t border-[#FFFFFF]/20 pb-5 md:px-7 md:pb-6 text-zinc-200"
         >
           {typeof a === "string" ? (
             <p className="text-[15px] md:text-[16px] leading-relaxed">{a}</p>

@@ -5,7 +5,7 @@ import ArrowLeft from "../../../assets/arrowLeft.svg";
 const Hero = () => {
   return (
     <div
-      className="min-h-screen flex flex-col justify-center items-center bg-cover bg-center"
+      className="min-h-screen sm:py-40 flex flex-col justify-center items-center bg-cover bg-center"
       style={{ backgroundImage: `url(${BGIMG})` }}
     >
       <div className="flex space-y-[11px] px-10 flex-col text-center justify-center items-center">

@@ -81,15 +81,15 @@ import GlobeIcon from "@/assets/webIcon.svg";
 
 const ContactSection: React.FC = () => {
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-16 px-4 md:py-24">
       <div
         className="mx-auto  relative z-20  w-full max-w-6xl rounded-[22px] border border-white/10
                    bg-[radial-gradient(140%_160%_at_10%_10%,rgba(239,32,151,0.18),rgba(255,255,255,0)_42%),#0E1113]
                    shadow-[0_40px_120px_-20px_rgba(0,0,0,0.6)] p-4 md:p-6 lg:p-8"
       >
-        <div className="flex md:flex-row flex-col gap-6 md:gap-40">
+        <div className="flex md:flex-row flex-col gap-6 md:gap-10 xl:gap-40">
           {/* Left: Form */}
-          <div className="rounded-2xl max-w-[508px]">
+          <div className="rounded-2xl  md:max-w-[450px] xl:max-w-[508px]">
             <h3 className="text-[22px] md:text-[24px] font-semibold text-zinc-100 mb-5">
               Laisse–nous un message
             </h3>
@@ -170,7 +170,7 @@ const ContactSection: React.FC = () => {
 
           {/* Right: Contact card */}
           <aside
-            className="rounded-2xl md:w-[464px] p-[1.2px]
+            className="rounded-2xl md:w-[500px] lg:w-[464px] p-[1.2px]
                       contactbg"
           >
             <div

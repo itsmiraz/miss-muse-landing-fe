@@ -45,7 +45,7 @@ const Footer = () => {
         <Line />
 
         <p className="pt-[19px] text-[18px] md:text-[24px]">
-          Miss Muse 2024 Copyright
+          Miss Muse 2025 Copyright
         </p>
       </div>
     </div>

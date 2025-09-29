@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import LeftArrow from "@/assets/LeftArrow.svg";
@@ -131,11 +131,15 @@ const Reviews = () => {
       <div className="pt-10 md:pt-20 pl-6 md:pl-8">
         <Swiper
           ref={swiperRef}
-          modules={[Navigation]}
+          modules={[Navigation, Autoplay]}
           slidesPerView="auto"
           centeredSlides={false}
           watchOverflow={true}
-          loop={false}
+          loop={true} // recommended with autoplay
+          autoplay={{
+            delay: 2000, // 3 seconds
+            disableOnInteraction: false, // continue autoplay after manual swipe
+          }}
           breakpoints={{
             300: { slidesPerView: 1, spaceBetween: 20 },
             400: { slidesPerView: 1, spaceBetween: 20 },

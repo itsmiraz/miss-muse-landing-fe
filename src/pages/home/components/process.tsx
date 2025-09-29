@@ -328,7 +328,7 @@ const TabsBar: React.FC<{
   onChange: (k: SectionKey) => void;
 }> = ({ active, onChange }) => {
   return (
-    <div className="mx-auto mt-8 mb-12 flex w-full max-w-5xl flex-wrap items-center justify-center gap-3">
+    <div className="mx-auto relative z-30 mt-8 mb-12 flex w-full max-w-5xl flex-wrap items-center justify-center gap-3">
       {TABS.map(({ key, label, Icon }) => {
         const isActive = active === key;
         return (
