@@ -42,7 +42,7 @@ const ReviewCard = ({ data }) => {
   return (
     <div className="rounded-2xl border border-white/30 w-fit ">
       <div
-        className="group relative md:flex-row py-[36px] px-[30px] flex-col z-50 flex gap-[10px] md:gap-[45px] w-[369px] h-fit md:h-[430px] md:w-[1082px] items-start md:items-center
+        className="group relative md:flex-row py-[36px] px-[30px] flex-col z-50 flex gap-[10px] md:gap-[45px] w-[369px] h-fit md:h-[430px] md:w-[880px] xl:w-[1082px] items-start md:items-center
                  rounded-2xl border bg-black/90 border-white/10
                  overflow-hidden"
       >
