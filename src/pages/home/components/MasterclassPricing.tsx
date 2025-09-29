@@ -107,14 +107,16 @@ const MasterclassPricing: React.FC = () => {
             {/* CTA Bar */}
             {/* CTA Bar */}
             <button
-              className="group mt-7 w-full rounded-lg border border-[#F71B9A]
-             bg-[linear-gradient(167.84deg,#FF0093_-76.16%,#3C0023_126.95%)]
-             px-5 py-4 text-center text-[16px] md:text-[18px] font-bold text-white
-             shadow-[0_14px_40px_-10px_rgba(239,32,151,0.55)]
-             transition-all duration-300 ease-in-out
-             hover:scale-[1.03] hover:shadow-[0_20px_50px_-10px_rgba(239,32,151,0.75)]"
+              className="group relative z-30 mt-7 w-full rounded-lg border border-[#F71B9A]
+    bg-[linear-gradient(167.84deg,#FF0093_-76.16%,#3C0023_126.95%)]
+    px-5 py-4 text-center text-[16px] md:text-[18px] font-bold text-white
+    shadow-[0_14px_40px_-10px_rgba(239,32,151,0.55)]
+    transition-all duration-300 ease-in-out
+    hover:scale-[1.03] 
+    hover:shadow-[0_20px_50px_-10px_rgba(239,32,151,0.75)]
+    hover:bg-[linear-gradient(167.84deg,#FF33B5_-76.16%,#5C0038_126.95%)]"
             >
-              Commencez Maintenant
+              Commencez Maintenant{" "}
               <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>
