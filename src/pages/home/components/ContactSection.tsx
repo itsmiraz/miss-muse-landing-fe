@@ -1,85 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
 import PhoneIcon from "@/assets/phone.svg";
 import MailIcon from "@/assets/Email.svg";
 import InstaIcon from "@/assets/InstaFull.svg";
 import TiktokIcon from "@/assets/TikTokFUll.svg";
 import GlobeIcon from "@/assets/webIcon.svg";
-// const PhoneIcon = (props: React.SVGProps<SVGSVGElement>) => (
-//   <svg viewBox="0 0 24 24" fill="none" {...props}>
-//     <path
-//       d="M22 16.92v2a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h2a2 2 0 0 1 2 1.72c.12.92.33 1.82.64 2.68a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.4-1.16a2 2 0 0 1 2.11-.45c.86.31 1.76.52 2.68.64A2 2 0 0 1 22 16.92Z"
-//       stroke="currentColor"
-//       strokeWidth="1.6"
-//       strokeLinecap="round"
-//       strokeLinejoin="round"
-//     />
-//   </svg>
-// );
-
-// const MailIcon = (props: React.SVGProps<SVGSVGElement>) => (
-//   <svg viewBox="0 0 24 24" fill="none" {...props}>
-//     <path
-//       d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"
-//       stroke="currentColor"
-//       strokeWidth="1.6"
-//     />
-//     <path
-//       d="m22 6-10 7L2 6"
-//       stroke="currentColor"
-//       strokeWidth="1.6"
-//       strokeLinecap="round"
-//       strokeLinejoin="round"
-//     />
-//   </svg>
-// );
-
-// const InstaIcon = (props: React.SVGProps<SVGSVGElement>) => (
-//   <svg viewBox="0 0 24 24" fill="none" {...props}>
-//     <rect
-//       x="3"
-//       y="3"
-//       width="18"
-//       height="18"
-//       rx="5"
-//       stroke="currentColor"
-//       strokeWidth="1.6"
-//     />
-//     <circle cx="12" cy="12" r="3.5" stroke="currentColor" strokeWidth="1.6" />
-//     <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
-//   </svg>
-// );
-
-// const TiktokIcon = (props: React.SVGProps<SVGSVGElement>) => (
-//   <svg viewBox="0 0 24 24" fill="none" {...props}>
-//     <path
-//       d="M14 3v6a5 5 0 0 0 5 5"
-//       stroke="currentColor"
-//       strokeWidth="1.6"
-//       strokeLinecap="round"
-//     />
-//     <path
-//       d="M14 10.5v3.2a4.2 4.2 0 1 1-4.2-4.2c.9 0 1.7.3 2.4.8"
-//       stroke="currentColor"
-//       strokeWidth="1.6"
-//       strokeLinecap="round"
-//       strokeLinejoin="round"
-//     />
-//   </svg>
-// );
-
-// const GlobeIcon = (props: React.SVGProps<SVGSVGElement>) => (
-//   <svg viewBox="0 0 24 24" fill="none" {...props}>
-//     <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" />
-//     <path
-//       d="M3 12h18M12 3c3.5 3.7 3.5 13.3 0 18M12 3c-3.5 3.7-3.5 13.3 0 18"
-//       stroke="currentColor"
-//       strokeWidth="1.6"
-//       strokeLinecap="round"
-//     />
-//   </svg>
-// );
+import emailjs from "@emailjs/browser";
 
 const ContactSection: React.FC = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState(""); // To show submission status
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("Sending...");
+
+    try {
+      // 1️⃣ Send to Google Sheets backend
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/contact`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const result = await response.json();
+
+      if (result.status === "success") {
+        // 2️⃣ Send email via EmailJS
+        if (EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY) {
+          await emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            {
+              name: `${formData.firstName} ${formData.lastName}`,
+              email: formData.email,
+              phone: formData.phone,
+              message: formData.message,
+            },
+            EMAILJS_PUBLIC_KEY
+          );
+        }
+
+        // ✅ Success message
+        setStatus("Message sent successfully!");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      } else {
+        setStatus("Failed to send message.");
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus("Error sending message.");
+    }
+  };
   return (
     <section className="py-16 px-4 md:py-24">
       <div
@@ -93,17 +90,17 @@ const ContactSection: React.FC = () => {
             <h3 className="text-[22px] md:text-[24px] font-semibold text-zinc-100 mb-5">
               Laisse–nous un message
             </h3>
-
-            <form className="space-y-4 ">
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-sm text-zinc-300">Nom</label>
                   <input
                     type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
                     placeholder="Nom"
-                    className="h-11 w-full rounded-md bg-white/5 text-zinc-100 placeholder:text-zinc-400
-                               border border-white/10 px-3 outline-none focus:border-[#47C7FF]
-                               transition"
+                    className="h-11 w-full rounded-md bg-white/5 text-zinc-100 placeholder:text-zinc-400 border border-white/10 px-3 outline-none focus:border-[#47C7FF] transition"
                   />
                 </div>
                 <div className="space-y-2">
@@ -112,10 +109,11 @@ const ContactSection: React.FC = () => {
                   </label>
                   <input
                     type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
                     placeholder="Nom de Famille"
-                    className="h-11 w-full rounded-md bg-white/5 text-zinc-100 placeholder:text-zinc-400
-                               border border-white/10 px-3 outline-none focus:border-[#47C7FF]
-                               transition"
+                    className="h-11 w-full rounded-md bg-white/5 text-zinc-100 placeholder:text-zinc-400 border border-white/10 px-3 outline-none focus:border-[#47C7FF] transition"
                   />
                 </div>
               </div>
@@ -125,10 +123,11 @@ const ContactSection: React.FC = () => {
                   <label className="text-sm text-zinc-300">Courriel</label>
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="Courriel"
-                    className="h-11 w-full rounded-md bg-white/5 text-zinc-100 placeholder:text-zinc-400
-                               border border-white/10 px-3 outline-none focus:border-[#47C7FF]
-                               transition"
+                    className="h-11 w-full rounded-md bg-white/5 text-zinc-100 placeholder:text-zinc-400 border border-white/10 px-3 outline-none focus:border-[#47C7FF] transition"
                   />
                 </div>
                 <div className="space-y-2">
@@ -137,10 +136,11 @@ const ContactSection: React.FC = () => {
                   </label>
                   <input
                     type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
                     placeholder="e.g. +1 647 267 7862"
-                    className="h-11 w-full rounded-md bg-white/5 text-zinc-100 placeholder:text-zinc-400
-                               border border-white/10 px-3 outline-none focus:border-[#47C7FF]
-                               transition"
+                    className="h-11 w-full rounded-md bg-white/5 text-zinc-100 placeholder:text-zinc-400 border border-white/10 px-3 outline-none focus:border-[#47C7FF] transition"
                   />
                 </div>
               </div>
@@ -148,23 +148,23 @@ const ContactSection: React.FC = () => {
               <div className="space-y-2">
                 <label className="text-sm text-zinc-300">Message</label>
                 <textarea
+                  name="message"
                   rows={5}
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="Message"
-                  className="w-full rounded-md bg-white/5 text-zinc-100 placeholder:text-zinc-400
-                             border border-white/10 p-3 outline-none focus:border-[#47C7FF]
-                             transition resize-none"
+                  className="w-full rounded-md bg-white/5 text-zinc-100 placeholder:text-zinc-400 border border-white/10 p-3 outline-none focus:border-[#47C7FF] transition resize-none"
                 />
               </div>
 
               <button
                 type="submit"
-                className="inline-flex items-center w-full justify-center rounded-full px-6 py-3 font-semibold text-white
-                           bg-[linear-gradient(167.84deg,#28B6FF_-76.16%,#015673_126.95%)]
-                           shadow-[0_14px_40px_-10px_rgba(40,182,255,0.55)]
-                           hover:opacity-95 transition"
+                className="inline-flex items-center w-full justify-center rounded-full px-6 py-3 font-semibold text-white bg-[linear-gradient(167.84deg,#28B6FF_-76.16%,#015673_126.95%)] shadow-[0_14px_40px_-10px_rgba(40,182,255,0.55)] hover:opacity-95 transition"
               >
                 Envoyez un message
               </button>
+
+              {status && <p className="mt-2 text-sm text-white/80">{status}</p>}
             </form>
           </div>
 
