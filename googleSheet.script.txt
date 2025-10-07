@@ -9,15 +9,17 @@ function doPost(e) {
       data.email,
       data.phone,
       data.message,
-      new Date(),
+      data.instagramId,
+      new Date()
     ]);
 
-    return ContentService.createTextOutput(
-      JSON.stringify({ status: "success" })
-    ).setMimeType(ContentService.MimeType.JSON);
+    return ContentService
+      .createTextOutput(JSON.stringify({ status: 'success' }))
+      .setMimeType(ContentService.MimeType.JSON);
+
   } catch (err) {
-    return ContentService.createTextOutput(
-      JSON.stringify({ status: "error", message: err.message })
-    ).setMimeType(ContentService.MimeType.JSON);
+    return ContentService
+      .createTextOutput(JSON.stringify({ status: 'error', message: err.message }))
+      .setMimeType(ContentService.MimeType.JSON);
   }
 }
