@@ -79,3 +79,17 @@ html {
     #3a3a3a 97.22%
   );
 }
+
+.join_now_bg {
+  background: linear-gradient(1.13deg, #1076b5 0.97%, #0d8e93 99.03%);
+}
+.waitlist_modal_bg {
+  border-radius: 19px;
+  background: radial-gradient(
+      circle at center,
+      rgba(239, 32, 151, 0.25) 46%,
+      rgb(129, 12, 78) 100%
+    ),
+    #12001a; /* dark base color to match your modal */
+  background-blend-mode: normal;
+}
